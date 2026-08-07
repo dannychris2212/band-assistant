@@ -33,3 +33,13 @@
 - MOMENTO: pedi um set pra público sertanejo e o assistente montou E explicou
   o que deixou de fora (tirou Aiaiai com justificativa). O "SOMENTE" no prompt
   é o que impede ele de inventar música que eu não toco.
+  ## Dia 2 (parte 4)
+- Testei "tem música da Pitty?" na interface e ele disse que não tinha — mas
+  EU TENHO Pitty no repertório. Não aceitei a resposta.
+- Debuguei: busquei "música da Pitty" isolado e o chunk dela não aparece nos
+  resultados. Então o Claude nunca recebeu a Pitty — o problema é a RECUPERAÇÃO,
+  não o prompt.
+- Causa raiz: os chunks rasos da lista completa têm pouco texto, então perdem
+  pros chunks ricos na busca por significado. Busca semântica é boa pra pergunta
+  conceitual ("sertanejo") e fraca pra fato pontual ("tem Pitty?").
+- Solução escolhida: busca híbrida (semântica + palavra-chave). Próxima sessão.
