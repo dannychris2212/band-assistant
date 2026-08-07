@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Banco de vetores — regenerado rodando indexar.py, não precisa versionar
+chroma_db/
