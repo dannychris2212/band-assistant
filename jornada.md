@@ -25,3 +25,11 @@
   que fiz no dia 1 é o que fez o chunking funcionar fácil.
 - Ficou pra próxima: entender melhor indexar vs buscar, separar em dois
   arquivos, e plugar o Claude pra gerar resposta.
+  ## Dia 2 (parte 2)
+- Refatorei: separei indexar.py (roda 1x) de buscar.py (roda sempre). Entendi
+  sozinha que só reindexo quando os dados mudam (analogia da biblioteca).
+- Pluguei o Claude (responder.py). O RAG está COMPLETO ponta a ponta.
+- Guardei a chave no .env, confirmei que o .gitignore protege (invisível no git).
+- MOMENTO: pedi um set pra público sertanejo e o assistente montou E explicou
+  o que deixou de fora (tirou Aiaiai com justificativa). O "SOMENTE" no prompt
+  é o que impede ele de inventar música que eu não toco.
