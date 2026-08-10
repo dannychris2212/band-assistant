@@ -43,3 +43,12 @@
   pros chunks ricos na busca por significado. Busca semântica é boa pra pergunta
   conceitual ("sertanejo") e fraca pra fato pontual ("tem Pitty?").
 - Solução escolhida: busca híbrida (semântica + palavra-chave). Próxima sessão.
+## Dia 3
+- Construí a busca híbrida: BM25 (palavra-chave) + semântica, fundidos com RRF.
+- Entendi por que RRF soma posição e não score: as escalas são diferentes, e
+  somar bruto faz uma busca atropelar a outra. Posição põe as duas na mesma régua.
+- A híbrida não resolveu a Pitty ainda — mas o debug revelou que a raiz é mais
+  funda: o problema é o CHUNKING. Na lista completa a Pitty é um bullet, não tem
+  ## próprio, então virou parte de um chunk gigante de 40 músicas.
+- Descobri camada por camada: consertei a busca e apareceu o problema do chunking.
+  É assim que debug funciona de verdade.
