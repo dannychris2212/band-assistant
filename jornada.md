@@ -52,3 +52,13 @@
   ## próprio, então virou parte de um chunk gigante de 40 músicas.
 - Descobri camada por camada: consertei a busca e apareceu o problema do chunking.
   É assim que debug funciona de verdade.
+  ## Dia 3 (parte 2)
+- Consertei o chunking: o ingest agora usa estratégia diferente por tipo de
+  arquivo (lista quebra por linha, resto por ##). 45 → 127 chunks.
+- Mas apareceu coisa nova: busca de "sertanejo" trouxe a Pitty, que não tem
+  nada a ver. Percebi que o problema real é mais fundo: tem pergunta de
+  CONSULTA ("tenho tal amp?") e pergunta de ANÁLISE ("o que serve pra tal
+  público?"), e são coisas diferentes. Consulta tem que ser busca exata, não
+  similaridade. Estávamos usando a ferramenta errada.
+- Solução pra próxima: roteador que classifica a pergunta (via LLM) e manda
+  pra busca exata ou pra semântica conforme o tipo.
