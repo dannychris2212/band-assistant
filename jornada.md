@@ -62,3 +62,12 @@
   similaridade. Estávamos usando a ferramenta errada.
 - Solução pra próxima: roteador que classifica a pergunta (via LLM) e manda
   pra busca exata ou pra semântica conforme o tipo.
+  ## Dia 4
+- Construí o roteador: o Claude classifica a pergunta em CONSULTA ou ANALITICA
+  antes de buscar, e manda pro caminho certo (busca exata ou semântica/híbrida).
+- Classificador acertou 6/6. Fechei o caso da Pitty de vez: "tem Pitty?" agora
+  acha ela pela busca exata, sem trazer lixo.
+- Debuguei dois detalhes de texto: o "?" grudado em "pitty?" quebrava o match,
+  e precisei limpar a pontuação dos dois lados (pergunta e chunk).
+- Lição: o conserto certo não era refinar a busca — era reconhecer que consulta
+  e análise pedem ferramentas diferentes. Rotear resolveu na raiz.
