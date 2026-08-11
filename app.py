@@ -1,5 +1,5 @@
 import streamlit as st
-from responder import responder
+from roteador import responder_roteado
 
 # Configuração da página
 st.set_page_config(page_title="Assistente de Banda", page_icon="🎸")
@@ -17,7 +17,7 @@ pergunta = st.text_input(
 if st.button("Perguntar"):
     if pergunta:
         with st.spinner("Consultando a base..."):
-            resposta = responder(pergunta)
+            resposta = responder_roteado(pergunta)
         st.markdown(resposta)
     else:
         st.warning("Digita uma pergunta primeiro 🙂")
