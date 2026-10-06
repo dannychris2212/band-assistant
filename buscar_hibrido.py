@@ -1,13 +1,22 @@
 import chromadb
 from rank_bm25 import BM25Okapi
 from ingest import carregar_chunks
+import re
+import unicodedata
+
+
+def tokenizar(texto):
+    """Minúsculo, sem acento, sem pontuação, quebrado em palavras."""
+    texto = unicodedata.normalize("NFKD", texto.lower())
+    texto = "".join(c for c in texto if not unicodedata.combining(c))
+    return re.sub(r"[^\w\s]", " ", texto).split()
 
 # --- Preparação: carrega os chunks uma vez ---
 chunks = carregar_chunks()
 textos = [c["texto"] for c in chunks]
 
 # BM25 (palavra-chave)
-corpus_tokenizado = [t.lower().split() for t in textos]
+corpus_tokenizado = [tokenizar(t) for t in textos]
 bm25 = BM25Okapi(corpus_tokenizado)
 
 # ChromaDB (semântica) — mesmo banco de sempre
@@ -23,7 +32,7 @@ def ranking_semantico(pergunta, n=20):
 
 def ranking_palavra_chave(pergunta, n=20):
     """Retorna os textos ordenados por BM25."""
-    tokens = pergunta.lower().split()
+    tokens = tokenizar(pergunta)
     scores = bm25.get_scores(tokens)
     melhores = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:n]
     return [textos[i] for i in melhores]
