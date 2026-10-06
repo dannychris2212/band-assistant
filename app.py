@@ -1,6 +1,5 @@
 import streamlit as st
 from roteador import responder_roteado
-import streamlit as st
 from indexar import colecao, indexar
 
 # Máquina nova (deploy) = banco vazio. Indexa uma vez ao subir.
