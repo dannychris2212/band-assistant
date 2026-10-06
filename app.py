@@ -1,5 +1,11 @@
 import streamlit as st
 from roteador import responder_roteado
+import streamlit as st
+from indexar import colecao, indexar
+
+# Máquina nova (deploy) = banco vazio. Indexa uma vez ao subir.
+if colecao.count() == 0:
+    indexar()
 
 # Configuração da página
 st.set_page_config(page_title="Assistente de Banda", page_icon="🎸")
