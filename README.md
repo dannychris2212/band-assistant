@@ -79,6 +79,8 @@ Gear specs and known workarounds live together, grouped **by moment of use** rat
 ### 7. Content-agnostic by design
 The public repo ships without chord charts or lyrics; the version I use at gigs has them, and they can't be public. Bonus: that forces the code to be agnostic to the content. Swap the `knowledge_base/` folder and you've swapped the band.
 
+### 8. Same bug, twice: tokenize both sides the same way
+After wiring hybrid search into the analytical path, "build a set for a sertanejo crowd" stopped finding the one song tagged for that audience. The keyword side was blind: splitting on spaces turned `sertanejo/"valley"/camarote` into a single token, and a question typed without accents ("publico") never matched "público". With nothing meaningful to match, BM25 ranked chunks by the word "pra". It was the same class of bug I'd already fixed in exact lookup (a "?" glued to "pitty?"). Fix: one tokenizer (lowercase, strip accents and punctuation) applied to both the corpus and the question.
 ---
 
 ## 🔇 Known limitations
