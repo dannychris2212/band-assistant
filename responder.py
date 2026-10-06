@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from anthropic import Anthropic
-from buscar import buscar
+from buscar_hibrido import buscar_hibrido
 
 # Carrega a chave do .env (nunca fica escrita no código)
 load_dotenv()
@@ -11,8 +11,7 @@ cliente = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 def responder(pergunta):
     """Fluxo completo do RAG: busca os chunks e pede ao Claude pra responder."""
     # 1. Recupera os chunks mais relevantes
-    resultado = buscar(pergunta, n=5)
-    chunks = resultado["documents"][0]
+    chunks = buscar_hibrido(pergunta, n=5)
 
     # 2. Monta o contexto juntando os chunks recuperados
     contexto = "\n\n".join(chunks)
