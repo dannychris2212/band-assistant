@@ -7,7 +7,7 @@ Every gig raises the same questions: *what do we play for this crowd? What gear 
 <!-- TODO: ~15s demo GIF -->
 ![demo](docs/demo.gif)
 
-🔗 **[Try it live](#)** <!-- TODO: Streamlit Cloud link -->
+🔗 **[Try it live](#)** <!-- TODO: Streamlit Cloud link --> https://band-assistant.streamlit.app/
 
 > The knowledge base and the assistant speak Brazilian Portuguese: that's the language of my repertoire and my gigs.
 
